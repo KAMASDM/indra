@@ -1,19 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import AboutUs from './components/AboutUs';
-import Gallery from './components/Gallery';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Main from "./components/MainPage/Main";
+import AboutUs from "./components/AboutUs/AboutUs";
+import Gallery from "./components/Gallery/Gallery";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer/Footer";
+import Events from "./components/Events/Events";
+import Blogs from "./components/Blogs/Blogs";
 
 function App() {
   return (
-    <Router>
+    <body>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Main />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/blogs" element={<Blogs />} />
       </Routes>
-    </Router>
+      <Footer />
+    </body>
   );
 }
 
