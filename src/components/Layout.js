@@ -1,12 +1,12 @@
 import * as React from 'react';
-import AppAppBar from './AppAppBar';
-import Footer from './Footer';
+import Navbar from './Navbar';
+import Footer from './Footer/Footer';
 import Box from '@mui/material/Box';
 
 export default function Layout({ children, headerImage }) {
   return (
     <Box>
-      <AppAppBar mode="light" toggleColorMode={() => {}} />
+      <Navbar mode="light" toggleColorMode={() => { }} />
       <Box
         component="img"
         src={headerImage}

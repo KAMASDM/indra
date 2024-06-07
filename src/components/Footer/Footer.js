@@ -12,7 +12,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 
 function Copyright() {
   return (
