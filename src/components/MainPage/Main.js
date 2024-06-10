@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Hero from '../HeroBanner/Hero';
-import Highlights from '../Highlights';
-import Features from '../Features';
-import Testimonials from '../Testimonials';
+import Highlights from './MainPageContent/Highlights';
+import Features from './MainPageContent/Features';
+import Testimonials from './MainPageContent/Testimonials';
 import FAQ from '../Faq/FAQ';
 import getLPTheme from '../../theme/getLPTheme';
 import Cards from "../BannerCard/Card"

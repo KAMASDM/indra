@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -12,117 +13,156 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import getLPTheme from "../../theme/getLPTheme";
 import Hero from "../HeroBanner/Hero";
 import Cards from "../BannerCard/Card";
+import Button from "@mui/material/Button";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import { useNavigate } from "react-router-dom";
 
-const events = [
-    {
-        title:
-            "Stepping Towards Compassion: Indraprasth Foundation's Footwear Donation Drive",
-        src: "https://indraprasthfoundation.org//BaaProject/media/8.webp",
-        alt: "Event 1",
-        description:
-            "In the vast tapestry of life, often, it's the smallest gestures that leave the most profound impact. For many of us, footwear is a taken-for-granted luxury. We choose, switch, and discard them with little thought. But for some, the luxury of a",
-    },
-    {
-        title:
-            "Crafting a Sustainable Future: Indraprasth Foundation’s Ganesh Idol Making Workshop",
-        src: "https://indraprasthfoundation.org/BaaProject/media/WhatsApp_Image_2023-09-10_at_9.53.28_PM.png",
-        alt: "Event 2",
-        description:
-            "In a world increasingly dominated by convenience and consumerism, it's essential to pause and reflect on our actions and their consequences. The environment, our most prized possession, needs champions who not only speak for it but also act to",
-    },
-    {
-        title: "Indraprasth Nu Rasodu: A Beacon of Hope and Nourishment on Wheels",
-        src: "https://indraprasthfoundation.org/BaaProject/media/rasodu-3.png",
-        alt: "Event 3",
-        description:
-            "In the vibrant streets of Gotri Road, as the world wakes up to the chirping of birds and the hustle and bustle of a new day, there emerges a sight that brings hope and solace to many – the 'Indraprasth Nu Rasodu' food truck.",
-    },
-];
+const BlogItem = ({ blog, theme }) => {
+    const navigate = useNavigate();
+    const [showFullDescription, setShowFullDescription] = useState(false);
 
-// const initiatives = [
-//   { title: 'Initiative 1', src: 'assets/initiative1.jpg', alt: 'Initiative 1' },
-//   { title: 'Initiative 2', src: 'assets/initiative2.jpg', alt: 'Initiative 2' },
-//   { title: 'Initiative 3', src: 'assets/initiative3.jpg', alt: 'Initiative 3' },
-// ];
+    const toggleDescription = () => {
+        setShowFullDescription((prev) => !prev);
+    };
+
+    return (
+        <Card
+            sx={{
+                boxShadow: theme.shadows[3],
+                backgroundColor: theme.palette.background.paper,
+            }}
+        >
+            <CardMedia
+                component="img"
+                height="200"
+                image={blog.image}
+                alt={blog.title}
+            />
+            <CardContent>
+                <Typography variant="h6" color={theme.palette.primary.dark}>
+                    {blog.title}
+                </Typography>
+                <Typography color={theme.palette.primary.black}>
+                    {showFullDescription ? (
+                        <div dangerouslySetInnerHTML={{ __html: blog.text }} />
+                    ) : (
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: `${blog.text.slice(0, 100)}...`,
+                            }}
+                        />
+                    )}
+                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                        <Button
+                            variant="contained"
+                            size="small"
+                            sx={{ marginLeft: 2 }}
+                            onClick={toggleDescription}
+                        >
+                            {showFullDescription ? "Read Less" : "Read More"}
+                        </Button>
+                        <Button
+                            variant="contained"
+                            size="small"
+                            sx={{ marginLeft: 2 }}
+                            onClick={() => navigate(`/Blog/${blog.id}`)}
+                        >
+                            View
+                        </Button>
+                    </Box>
+                </Typography>
+            </CardContent>
+        </Card>
+    );
+};
 
 export default function Blogs() {
     const theme = useTheme();
-    const [mode, setMode] = React.useState("light");
+    const [mode, setMode] = useState("light");
+    const [value, setValue] = useState("3");
+    const [categories, setCategories] = useState([]);
+    const [blogs, setBlogs] = useState([]);
 
     const LPtheme = createTheme(getLPTheme(mode));
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    useEffect(() => {
+        axios
+            .get("https://indraprasthfoundation.org/api/bloglistview")
+            .then((response) => {
+                setCategories(response.data.category);
+                setBlogs(
+                    response.data.blog.map((blog) => ({
+                        ...blog,
+                        showFullDescription: false,
+                    }))
+                );
+            })
+            .catch((error) => {
+                console.error("Error fetching data: ", error);
+            });
+    }, []);
+
+    const filterBlogsByCategory = (categoryId) => {
+        return blogs.filter((blog) => blog.category === parseInt(categoryId));
+    };
 
     return (
         <ThemeProvider theme={LPtheme}>
             <CssBaseline />
             <Hero />
             <Cards title="Blogs" />
-
             <Container>
-                <Box sx={{ py: 8, backgroundColor: theme.palette.background.default }}>
-                    <Typography
-                        variant="h4"
-                        gutterBottom
-                        align="center"
-                        color={theme.palette.primary.main}
-                    >
-
-                    </Typography>
-                    <Grid container spacing={4}>
-                        {events.map((event, index) => (
-                            <Grid item xs={12} sm={6} md={4} key={index}>
-                                <Card
+                <Box sx={{ width: "100%", typography: "body1" }}>
+                    <TabContext value={value}>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                width: "100%",
+                                typography: "body1",
+                            }}
+                        >
+                            <TabList
+                                onChange={handleChange}
+                                aria-label="lab API tabs example"
+                            >
+                                {categories.map((category) => (
+                                    <Tab
+                                        key={category.id}
+                                        label={category.name}
+                                        value={category.id.toString()}
+                                    />
+                                ))}
+                            </TabList>
+                        </Box>
+                        {categories.map((category) => (
+                            <TabPanel key={category.id} value={category.id.toString()}>
+                                <Box
                                     sx={{
-                                        boxShadow: theme.shadows[3],
-                                        backgroundColor: theme.palette.background.paper,
+                                        py: 2,
+                                        backgroundColor: theme.palette.background.default,
                                     }}
                                 >
-                                    <CardMedia
-                                        component="img"
-                                        height="200"
-                                        image={event.src}
-                                        alt={event.alt}
-                                    />
-                                    <CardContent>
-                                        <Typography variant="h5" color={theme.palette.primary.dark}>
-                                            {event.title}
-                                        </Typography>
-                                        <Typography
-                                            variant="h5"
-                                            color={theme.palette.primary.black}
-                                        >
-                                            {event.description}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
+                                    <Grid container spacing={4}>
+                                        {filterBlogsByCategory(category.id).map((blog, index) => (
+                                            <Grid item xs={12} sm={6} md={4} key={index}>
+                                                <BlogItem blog={blog} theme={theme} />
+                                            </Grid>
+                                        ))}
+                                    </Grid>
+                                </Box>
+                            </TabPanel>
                         ))}
-                    </Grid>
+                    </TabContext>
                 </Box>
-
-                {/* <Box sx={{ py: 8, backgroundColor: theme.palette.background.default }}>
-          <Typography variant="h4" gutterBottom align="center" color={theme.palette.primary.main}>
-            Our Initiatives
-          </Typography>
-          <Grid container spacing={4}>
-            {initiatives.map((initiative, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card sx={{ boxShadow: theme.shadows[3], backgroundColor: theme.palette.background.paper }}>
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={initiative.src}
-                    alt={initiative.alt}
-                  />
-                  <CardContent>
-                    <Typography variant="h5" color={theme.palette.primary.dark}>
-                      {initiative.title}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Box> */}
             </Container>
         </ThemeProvider>
     );

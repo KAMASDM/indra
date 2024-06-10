@@ -6,12 +6,12 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-import blanketImage from '../assets/blanket.png'; // Import the images
-import notebookImage from '../assets/notebook.png';
-import bicycleImage from '../assets/bicycle.png';
-import ganeshImage from '../assets/ganesh.png';
-import footwearImage from '../assets/footwear.png';
-import holikaImage from '../assets/blood.png';
+import blanketImage from '../../../assets/blanket.png'; // Import the images
+import notebookImage from '../../../assets/notebook.png';
+import bicycleImage from '../../../assets/bicycle.png';
+import ganeshImage from '../../../assets/ganesh.png';
+import footwearImage from '../../../assets/footwear.png';
+import holikaImage from '../../../assets/blood.png';
 
 const items = [
   {

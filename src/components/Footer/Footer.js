@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
-
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -30,7 +29,7 @@ export default function Footer() {
       sx={{
         backgroundColor: (theme) =>
           theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(0, 0, 0, 0.7)',
-        py: { xs: 8, sm: 10 },
+        py: { xs: 8, sm: 3 },
       }}
     >
       <Container

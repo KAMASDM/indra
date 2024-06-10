@@ -1,18 +1,11 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import bannerImage1 from "../../assets/rasodu-3.png";
 import bannerImage2 from "../../assets/two.jpeg";
 import bannerImage3 from "../../assets/three.jpeg"; // Add more images as needed
-import logo from "../../assets/logo.png"; // Import the logo
 import styled from "@mui/system/styled";
-import Cards from "../BannerCard/Card";
 
 const images = [
   bannerImage1,
@@ -43,21 +36,6 @@ const StyledBox = styled("div")(({ theme }) => ({
   },
 }));
 
-const StyledCard = styled(Card)(({ theme }) => ({
-  width: "100%",
-  maxWidth: "800px",
-  marginTop: theme.spacing(-10),
-  borderRadius: "16px",
-  boxShadow:
-    theme.palette.mode === "light"
-      ? "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)"
-      : "0 1px 3px rgba(0, 0, 0, 0.72), 0 1px 2px rgba(0, 0, 0, 0.54)",
-  backdropFilter: "blur(24px)",
-  backgroundColor:
-    theme.palette.mode === "light"
-      ? "rgba(255, 255, 255, 0.6)"
-      : "rgba(0, 0, 0, 0.6)",
-}));
 
 export default function Hero() {
   return (

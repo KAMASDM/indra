@@ -12,11 +12,11 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import styled, { keyframes } from 'styled-components';
-import logo from '../assets/logo1.png';
-import logoone from '../assets/logo2.png';
+import logo from '../../assets/logo1.png';
+import logoone from '../../assets/logo2.png';
 import { Link as RouterLink } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import getLPTheme from "../theme/getLPTheme"
+import getLPTheme from "../../theme/getLPTheme"
 
 const rotate = keyframes`
   from {
@@ -140,10 +140,10 @@ function Navbar({ mode, toggleColorMode }) {
                 alignItems: 'center',
               }}
             >
-              <Button color="primary" variant="contained" size="large" sx={{ fontWeight: 'bold' }}>
+              <Button color="primary" variant="contained" size="small" sx={{ fontWeight: 'bold' }}>
                 Donate
               </Button>
-              <Button color="primary" variant="contained" size="large" sx={{ fontWeight: 'bold' }}>
+              <Button color="primary" variant="contained" size="small" sx={{ fontWeight: 'bold' }}>
                 Volunteer
               </Button>
             </Box>
