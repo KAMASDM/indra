@@ -8,23 +8,20 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme } from '@mui/material/styles';
-import headerImage from '../../assets/rasodu-3.png';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import getLPTheme from '../../theme/getLPTheme';
 import Hero from '../HeroBanner/Hero';
 import Cards from "../BannerCard/Card"
+import Button from '@mui/material/Button';
 
 const events = [
-    { title: 'Event 1', src: 'assets/event1.jpg', alt: 'Event 1' },
-    { title: 'Event 2', src: 'assets/event2.jpg', alt: 'Event 2' },
-    { title: 'Event 3', src: 'assets/event3.jpg', alt: 'Event 3' },
+    { title: 'Ganesh-Idol Making', src: "https://indraprasthfoundation.org//BaaProject/media/8.webp", alt: 'Ganesh-Idol Making' },
+    { title: 'Ganesh Aagman', src: 'https://indraprasthfoundation.org//BaaProject/media/WhatsApp_Image_2023-09-18_at_9.40.36_PM_1.webp', alt: 'Ganesh Aagman' },
+    { title: 'Drawing Competetion', src: 'https://indraprasthfoundation.org//BaaProject/media/DSC_0190.webp', alt: 'Drawing Competetion' },
+    { title: 'Millet Recipe Competition', src: 'https://indraprasthfoundation.org//BaaProject/media/DSC05446.webp', alt: 'Millet Recipe Competition' },
+    { title: 'Media Coverage', src: 'https://indraprasthfoundation.org/BaaProject/media/WhatsApp_Image_2024-04-05_at_16.27.10.jpeg', alt: 'Media Coverage' },
 ];
 
-const initiatives = [
-    { title: 'Initiative 1', src: 'assets/initiative1.jpg', alt: 'Initiative 1' },
-    { title: 'Initiative 2', src: 'assets/initiative2.jpg', alt: 'Initiative 2' },
-    { title: 'Initiative 3', src: 'assets/initiative3.jpg', alt: 'Initiative 3' },
-];
 
 export default function Events() {
     const theme = useTheme();
@@ -40,6 +37,35 @@ export default function Events() {
                 title="Events"
             />
 
-        </ThemeProvider>
+            <Container
+            >
+                <Box sx={{ py: 8, backgroundColor: theme.palette.background.default }}>
+                    <Typography variant="h4" gutterBottom align="center" color={theme.palette.primary.main}>
+                        Events
+                    </Typography>
+                    <Grid container spacing={4}>
+                        {events.map((event, index) => (
+                            <Grid item xs={12} sm={6} md={4} key={index}>
+                                <Card sx={{ boxShadow: theme.shadows[3], backgroundColor: theme.palette.background.paper }}>
+                                    <CardMedia
+                                        component="img"
+                                        height="200"
+                                        image={event.src}
+                                        alt={event.alt}
+                                    />
+                                    <CardContent>
+                                        <Typography variant="h5" color={theme.palette.primary.dark} >
+                                            {event.title}
+                                            <Button variant="contained" size="small" sx={{ marginLeft: 2 }} href="/gallery">View</Button>
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+            </Container>
+
+        </ThemeProvider >
     );
 }

@@ -5,21 +5,12 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import { useTheme } from '@mui/material/styles';
 import Hero from '../HeroBanner/Hero';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import headerImage from '../../assets/rasodu-3.png';
-import Navbar from '../Navbar';
 import getLPTheme from '../../theme/getLPTheme';
-import { CssBaseline } from '@mui/material';
 import Cards from "../BannerCard/Card"
 
-const licenses = [
-  { src: 'assets/license1.jpg', alt: 'License 1' },
-  { src: 'assets/license2.jpg', alt: 'License 2' },
-  { src: 'assets/license3.jpg', alt: 'License 3' },
-];
 
 const initiatives = [
   {

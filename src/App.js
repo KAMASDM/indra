@@ -4,10 +4,12 @@ import Main from "./components/MainPage/Main";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Gallery from "./components/Gallery/Gallery";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Events from "./components/Events/Events";
 import Blogs from "./components/Blogs/Blogs";
+import ViewBlog from "./components/Blogs/ViewBlog";
+import ViewGallery from "./components/Gallery/ViewGallery";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/events" element={<Events />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/Blog/:id" element={<ViewBlog />} />
+        <Route path="/viewGallery" element={<ViewGallery />} />
       </Routes>
       <Footer />
     </body>
