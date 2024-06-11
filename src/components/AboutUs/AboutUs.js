@@ -10,6 +10,8 @@ import Hero from '../HeroBanner/Hero';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import getLPTheme from '../../theme/getLPTheme';
 import Cards from "../BannerCard/Card"
+// import Loader from '../../theme/Loader/Loader';
+// import logo from "../../assets/logo1.png"
 
 
 const initiatives = [
@@ -44,6 +46,7 @@ export default function AboutUs() {
 
   return (
     <ThemeProvider theme={LPtheme}>
+      {/* <Loader logo={logo} /> */}
       <Hero />
       <Cards
         title="About Us"
@@ -89,8 +92,8 @@ export default function AboutUs() {
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <Card sx={{ boxShadow: theme.shadows[3], backgroundColor: theme.palette.background.paper }}>
-                <CardContent>
+              <Card sx={{ boxShadow: theme.shadows[3], backgroundColor: theme.palette.background.paper, height: '100%' }}>
+                <CardContent style={{ height: '100%' }}>
                   <Typography variant="h5" gutterBottom color={theme.palette.primary.dark}>
                     Mission
                   </Typography>
@@ -101,8 +104,8 @@ export default function AboutUs() {
               </Card>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Card sx={{ boxShadow: theme.shadows[3], backgroundColor: theme.palette.background.paper }}>
-                <CardContent>
+              <Card sx={{ boxShadow: theme.shadows[3], backgroundColor: theme.palette.background.paper, height: '100%' }}>
+                <CardContent style={{ height: '100%' }}>
                   <Typography variant="h5" gutterBottom color={theme.palette.primary.dark}>
                     Vision
                   </Typography>
@@ -115,6 +118,7 @@ export default function AboutUs() {
           </Grid>
         </Box>
 
+
         {/* Our Initiatives */}
         <Box sx={{ backgroundColor: theme.palette.background.default }}>
           <Typography variant="h4" gutterBottom align="center" color={theme.palette.primary.main}>
@@ -123,8 +127,8 @@ export default function AboutUs() {
           <Grid container spacing={4}>
             {initiatives.map((initiative, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card sx={{ boxShadow: theme.shadows[3], backgroundColor: theme.palette.background.paper }}>
-                  <CardContent>
+                <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%', boxShadow: theme.shadows[3], backgroundColor: theme.palette.background.paper }}>
+                  <CardContent style={{ flexGrow: 1 }}>
                     <Typography variant="h5" gutterBottom color={theme.palette.primary.dark}>
                       {initiative.title}
                     </Typography>
@@ -137,6 +141,7 @@ export default function AboutUs() {
             ))}
           </Grid>
         </Box>
+
       </Container>
 
     </ThemeProvider>

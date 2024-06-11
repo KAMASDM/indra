@@ -67,7 +67,7 @@ export default function ViewBlog() {
                         >
                             <CardMedia
                                 component="img"
-                                height="600"
+                                height="400"
                                 image={data.image}
                                 alt={data.title}
                                 sx={{

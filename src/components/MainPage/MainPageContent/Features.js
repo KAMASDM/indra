@@ -45,9 +45,9 @@ const initiatives = [
     description:
       'Every child deserves the right to education, and with our notebook donation drives, we strive to equip them with the tools they need to carve out a brighter future.',
     images: [
-      'url("/static/images/initiatives/education-light.png")',
-      'url("/static/images/initiatives/education-light.png")',
-      'url("/static/images/initiatives/education-light.png")'
+      'url("https://www.ourvadodara.com/wp-content/uploads/2022/12/indraprasth-yuvak-mandal-1.jpeg")',
+      'url("https://pbs.twimg.com/media/FPZpGekWQAMCqYY.jpg")',
+      'url("https://indraprasthfoundation.org/BaaProject/media/rasodu-3.png")'
     ],
   },
   {
@@ -57,8 +57,8 @@ const initiatives = [
       'Walking miles can become a bit easier with the right pair of shoes. We aim to protect the feet of the less fortunate, ensuring they tread their paths with a bit more comfort.',
     images: [
       'url("https://indraprasthfoundation.org/BaaProject/media/footwear.png")',
-      'url("/static/images/initiatives/footwear-light.png")',
-      'url("/static/images/initiatives/footwear-light.png")'
+      'url("https://pbs.twimg.com/media/FPZpGekWQAMCqYY.jpg")',
+      'url("https://indraprasthfoundation.org/BaaProject/media/rasodu-3.png")'
     ],
   },
   {

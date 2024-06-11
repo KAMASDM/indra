@@ -6,8 +6,10 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
+import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 import getLPTheme from "../../theme/getLPTheme";
 import Hero from "../HeroBanner/Hero";
 import Cards from "../BannerCard/Card";
@@ -24,6 +26,7 @@ export default function Gallery() {
   const [category, setCategory] = useState([]);
   const [data, setData] = useState([]);
   const LPtheme = createTheme(getLPTheme(mode));
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -86,16 +89,27 @@ export default function Gallery() {
                         >
                           <CardMedia
                             component="img"
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: "cover" }}
                             height="300"
                             image={`https://indraprasthfoundation.org/${img.image}`}
                             alt={item.name}
                           />
-
                         </Card>
                       </Grid>
-                    )).slice(0, 6)}
+                    ))
+                    .slice(0, 6)}
                 </Grid>
+                <Box textAlign="center" mt={4}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      navigate(`/Gallery/${item.id}`);
+                    }}
+                  >
+                    View More
+                  </Button>
+                </Box>
               </Box>
             </TabPanel>
           ))}

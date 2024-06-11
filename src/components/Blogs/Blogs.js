@@ -56,14 +56,14 @@ const BlogItem = ({ blog, theme }) => {
                         />
                     )}
                     <Box sx={{ display: "flex", justifyContent: "center" }}>
-                        <Button
+                        {/* <Button
                             variant="contained"
                             size="small"
                             sx={{ marginLeft: 2 }}
                             onClick={toggleDescription}
                         >
                             {showFullDescription ? "Read Less" : "Read More"}
-                        </Button>
+                        </Button> */}
                         <Button
                             variant="contained"
                             size="small"

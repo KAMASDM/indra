@@ -11,47 +11,59 @@ import { useTheme } from '@mui/system';
 
 const userTestimonials = [
   {
-    avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />,
-    name: 'Remy Sharp',
-    occupation: 'Senior Engineer',
+    name: '- Rajesh Bhatt',
+    service: "Indraprasth Nu Rasodu(Free Nutritious Meals)",
     testimonial:
-      "I absolutely love how versatile this product is! Whether I'm tackling work projects or indulging in my favorite hobbies, it seamlessly adapts to my changing needs. Its intuitive design has truly enhanced my daily routine, making tasks more efficient and enjoyable.",
+      "Donating to Indraprasth Nu Rasodu has been one of the most fulfilling experiences of my life.Knowing that my contributions help provide nutritious meals to those in need brings me immense joy.This organization is truly making a difference in our community."
+    ,
   },
   {
-    avatar: <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />,
-    name: 'Travis Howard',
-    occupation: 'Lead Product Designer',
+    name: '- Sneha Gupta',
     testimonial:
-      "One of the standout features of this product is the exceptional customer support. In my experience, the team behind this product has been quick to respond and incredibly helpful. It's reassuring to know that they stand firmly behind their product.",
+      "As a donor to Indraprasth Nu Rasodu, I am proud to support a cause that ensures no one goes hungry. The dedication of the team and the impact of their work is inspiring. I encourage everyone to contribute to this noble initiative."
+    ,
   },
   {
-    avatar: <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />,
-    name: 'Cindy Baker',
-    occupation: 'CTO',
+    name: '- Vikram Sharma',
+    service: "Footwear Donation",
     testimonial:
-      'The level of simplicity and user-friendliness in this product has significantly simplified my life. I appreciate the creators for delivering a solution that not only meets but exceeds user expectations.',
+      "Donating footwear through this program has been an eye-opener. It's incredible how something as simple as a pair of shoes can transform someone's life. Indraprasth Nu Rasodu ensures that our donations reach those who need them the most, making every contribution count."
+    ,
   },
   {
-    avatar: <Avatar alt="Remy Sharp" src="/static/images/avatar/4.jpg" />,
-    name: 'Julia Stewart',
-    occupation: 'Senior Engineer',
+    name: '- Neha Joshi',
     testimonial:
-      "I appreciate the attention to detail in the design of this product. The small touches make a big difference, and it's evident that the creators focused on delivering a premium experience.",
+      "I am grateful for the opportunity to donate footwear to those in need. Seeing the smiles on the faces of children who receive new shoes is priceless. Indraprasth Nu Rasodu’s commitment to helping the underprivileged is truly commendable."
+    ,
   },
   {
-    avatar: <Avatar alt="Travis Howard" src="/static/images/avatar/5.jpg" />,
-    name: 'John Smith',
-    occupation: 'Product Designer',
+    name: '- Arjun Mehta',
+    service: "Discounted Books for Underprivileged Kids",
     testimonial:
-      "I've tried other similar products, but this one stands out for its innovative features. It's clear that the makers put a lot of thought into creating a solution that truly addresses user needs.",
+      "Contributing to the discounted books program has been incredibly rewarding. Education is a powerful tool, and knowing that my donations are helping children access quality books and learning materials is heartwarming. Indraprasth Nu Rasodu is paving the way for a brighter future."
+    ,
   },
   {
-    avatar: <Avatar alt="Cindy Baker" src="/static/images/avatar/6.jpg" />,
-    name: 'Daniel Wolf',
-    occupation: 'CDO',
+    name: '- Pooja Desai',
     testimonial:
-      "The quality of this product exceeded my expectations. It's durable, well-designed, and built to last. Definitely worth the investment!",
+      "I believe in the power of education, and donating to this cause has been a wonderful experience. Indraprasth Nu Rasodu’s initiative to provide discounted books to underprivileged kids is making a significant impact. It feels great to be a part of this journey."
+    ,
   },
+  {
+    name: '- Karan Patel',
+    service: "Free Blanket Donation",
+    testimonial:
+      "Donating blankets through Indraprasth Nu Rasodu has allowed me to make a tangible difference in people's lives, especially during the harsh winters. It’s reassuring to know that my contributions are helping to keep people warm and safe."
+
+    ,
+  },
+  {
+    name: '- Ritu Shah',
+    testimonial:
+      "I am honored to support the free blanket donation program. The team at Indraprasth Nu Rasodu ensures that our donations reach the most vulnerable, providing them with warmth and comfort. This initiative is truly heartwarming, and I am proud to be a part of it."
+    ,
+  },
+
 ];
 
 const whiteLogos = [
@@ -72,10 +84,6 @@ const darkLogos = [
   'https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f5ca4e548b0deb1041c33_Ankara-black.svg',
 ];
 
-const logoStyle = {
-  width: '64px',
-  opacity: 0.3,
-};
 
 export default function Testimonials() {
   const theme = useTheme();
@@ -103,11 +111,11 @@ export default function Testimonials() {
         <Typography component="h2" variant="h4" color="text.primary">
           Testimonials
         </Typography>
-        <Typography variant="body1" color="text.secondary">
+        {/* <Typography variant="body1" color="text.secondary">
           See what our customers love about our products. Discover how we excel in
           efficiency, durability, and satisfaction. Join us for quality, innovation,
           and reliable support.
-        </Typography>
+        </Typography> */}
       </Box>
       <Grid container spacing={2}>
         {userTestimonials.map((testimonial, index) => (
@@ -119,9 +127,14 @@ export default function Testimonials() {
                 justifyContent: 'space-between',
                 flexGrow: 1,
                 p: 1,
+                border: '1px solid',
+                borderColor: 'grey.300',
               }}
             >
               <CardContent>
+                <Typography variant="body2" >
+                  {testimonial.service}
+                </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {testimonial.testimonial}
                 </Typography>
@@ -135,14 +148,7 @@ export default function Testimonials() {
                 }}
               >
                 <CardHeader
-                  avatar={testimonial.avatar}
                   title={testimonial.name}
-                  subheader={testimonial.occupation}
-                />
-                <img
-                  src={logos[index]}
-                  alt={`Logo ${index + 1}`}
-                  style={logoStyle}
                 />
               </Box>
             </Card>
