@@ -33,7 +33,6 @@ const RotatingLogo = styled.img`
   animation: ${rotate} 10s linear infinite;
 `;
 
-
 function Navbar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
 
@@ -50,7 +49,6 @@ function Navbar({ mode, toggleColorMode }) {
   };
 
   return (
-
     <ThemeProvider theme={LPtheme}>
       <AppBar
         position="fixed"
@@ -67,7 +65,7 @@ function Navbar({ mode, toggleColorMode }) {
             sx={(theme) => ({
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
+              justifyContent: 'space-between',
               flexShrink: 0,
               borderRadius: '999px',
               bgcolor: 'hsla(220, 60%, 99%, 0.6)',
@@ -83,13 +81,13 @@ function Navbar({ mode, toggleColorMode }) {
                 display: 'flex',
                 alignItems: 'center',
                 px: 0,
-                overflow: 'visible', // Allow overflow for the logo
+                overflow: 'visible',
               }}
             >
               <RotatingLogo src={logo} alt="Indraprasth Foundation Logo" />
               <img src={logoone} alt="Indraprasth Foundation Logo" style={{ height: 150, marginTop: 0 }} />
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1, gap: 1 }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center', flexGrow: 1, gap: 1 }}>
               <Button
                 component={RouterLink}
                 to="/"
@@ -155,7 +153,7 @@ function Navbar({ mode, toggleColorMode }) {
                 Volunteer
               </Button>
             </Box>
-            <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
                 <MenuIcon />
               </IconButton>
@@ -184,7 +182,7 @@ function Navbar({ mode, toggleColorMode }) {
                   <MenuItem component={RouterLink} to="/events" onClick={toggleDrawer(false)}>Events</MenuItem>
                   <MenuItem component={RouterLink} to="/blogs" onClick={toggleDrawer(false)}>Blogs</MenuItem>
                   <MenuItem>
-                    <Button color="primary" variant="contained" fullWidth >
+                    <Button color="primary" variant="contained" fullWidth>
                       Donate
                     </Button>
                   </MenuItem>
