@@ -10,6 +10,7 @@ import Events from "./components/Events/Events";
 import Blogs from "./components/Blogs/Blogs";
 import ViewBlog from "./components/Blogs/ViewBlog";
 import ViewGallery from "./components/Gallery/ViewGallery";
+import Donate from "./components/Donate/Donate";
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/Blog/:id" element={<ViewBlog />} />
-        <Route path="/viewGallery" element={<ViewGallery />} />
+        <Route path="/Gallery/:id" element={<ViewGallery />} />
+        <Route path="/Donate" element={<Donate />} />
+
       </Routes>
       <Footer />
     </body>

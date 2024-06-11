@@ -17,6 +17,7 @@ import logoone from '../../assets/logo2.png';
 import { Link as RouterLink } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import getLPTheme from "../../theme/getLPTheme"
+import { useNavigate } from 'react-router-dom';
 
 const rotate = keyframes`
   from {
@@ -32,6 +33,7 @@ const RotatingLogo = styled.img`
   animation: ${rotate} 10s linear infinite;
 `;
 
+
 function Navbar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
 
@@ -40,6 +42,12 @@ function Navbar({ mode, toggleColorMode }) {
   };
 
   const LPtheme = createTheme(getLPTheme(mode));
+
+  const navigate = useNavigate();
+
+  const handleDonateClick = () => {
+    navigate('/Donate');
+  };
 
   return (
 
@@ -140,7 +148,7 @@ function Navbar({ mode, toggleColorMode }) {
                 alignItems: 'center',
               }}
             >
-              <Button color="primary" variant="contained" size="small" sx={{ fontWeight: 'bold' }}>
+              <Button color="primary" variant="contained" size="small" sx={{ fontWeight: 'bold' }} onClick={handleDonateClick}>
                 Donate
               </Button>
               <Button color="primary" variant="contained" size="small" sx={{ fontWeight: 'bold' }}>
@@ -176,7 +184,7 @@ function Navbar({ mode, toggleColorMode }) {
                   <MenuItem component={RouterLink} to="/events" onClick={toggleDrawer(false)}>Events</MenuItem>
                   <MenuItem component={RouterLink} to="/blogs" onClick={toggleDrawer(false)}>Blogs</MenuItem>
                   <MenuItem>
-                    <Button color="primary" variant="contained" fullWidth>
+                    <Button color="primary" variant="contained" fullWidth >
                       Donate
                     </Button>
                   </MenuItem>
