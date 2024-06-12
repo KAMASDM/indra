@@ -24,9 +24,9 @@ const BlogItem = ({ blog, theme }) => {
     const navigate = useNavigate();
     const [showFullDescription, setShowFullDescription] = useState(false);
 
-    const toggleDescription = () => {
-        setShowFullDescription((prev) => !prev);
-    };
+    // const toggleDescription = () => {
+    //     setShowFullDescription((prev) => !prev);
+    // };
 
     return (
         <Card
@@ -116,7 +116,7 @@ export default function Blogs() {
     return (
         <ThemeProvider theme={LPtheme}>
             <CssBaseline />
-            <Hero />
+            <Hero imageHeight={550} />
             <Cards title="Blogs" />
             <Container>
                 <Box sx={{ width: "100%", typography: "body1" }}>

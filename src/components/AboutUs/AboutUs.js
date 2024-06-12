@@ -13,7 +13,6 @@ import Cards from "../BannerCard/Card"
 // import Loader from '../../theme/Loader/Loader';
 // import logo from "../../assets/logo1.png"
 
-
 const initiatives = [
   {
     title: 'Indraprasth Nu Rasodu',
@@ -40,14 +39,13 @@ const initiatives = [
 export default function AboutUs() {
   const [mode, setMode] = React.useState('light');
 
-
   const theme = useTheme();
   const LPtheme = createTheme(getLPTheme(mode));
 
   return (
     <ThemeProvider theme={LPtheme}>
       {/* <Loader logo={logo} /> */}
-      <Hero />
+      <Hero imageHeight={550} />
       <Cards
         title="About Us"
       />
@@ -55,7 +53,7 @@ export default function AboutUs() {
       <Container
         id="testimonials"
         sx={{
-          pt: { xs: 4, sm: 12 },
+          pt: { xs: 4, sm: 4 },
           pb: { xs: 8, sm: 16 },
           position: 'relative',
           display: 'flex',

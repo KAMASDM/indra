@@ -14,7 +14,7 @@ const images = [
   // Add more images here if needed
 ];
 
-const StyledBox = styled("div")(({ theme }) => ({
+const StyledBox = styled("div")(({ theme, height = 700 }) => ({
   alignSelf: "center",
   width: "calc(100% - 40px)", // Adjusted for left and right margin
   height: 400,
@@ -32,40 +32,43 @@ const StyledBox = styled("div")(({ theme }) => ({
       ? "hsla(220, 25%, 80%, 0.5)"
       : "hsla(210, 100%, 80%, 0.1)",
   [theme.breakpoints.up("sm")]: {
-    height: 700,
+    height: height,
   },
 }));
 
 
-export default function Hero() {
+export default function Hero({ size, imageHeight }) {
   return (
-    <Box
-      id="hero"
-      sx={(theme) => ({
-        width: "100%",
-        backgroundImage:
-          theme.palette.mode === "light"
-            ? "radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)"
-            : "radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 16%), transparent)",
-        backgroundRepeat: "no-repeat",
-      })}
-    >
-      <Carousel
-        showArrows={true}
-        autoPlay={true}
-        infiniteLoop={true}
-        showThumbs={false}
-        showStatus={false}
+    <div className={`hero-banner ${size}`}>
+      <Box
+        id="hero"
+        sx={(theme) => ({
+          width: "100%",
+          backgroundImage:
+            theme.palette.mode === "light"
+              ? "radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)"
+              : "radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 16%), transparent)",
+          backgroundRepeat: "no-repeat",
+        })}
       >
-        {images.map((image, index) => (
-          <StyledBox
-            key={index}
-            sx={{
-              backgroundImage: `url(${image})`,
-            }}
-          />
-        ))}
-      </Carousel>
-    </Box>
+        <Carousel
+          showArrows={true}
+          autoPlay={true}
+          infiniteLoop={true}
+          showThumbs={false}
+          showStatus={false}
+        >
+          {images.map((image, index) => (
+            <StyledBox
+              height={imageHeight}
+              key={index}
+              sx={{
+                backgroundImage: `url(${image})`,
+              }}
+            />
+          ))}
+        </Carousel>
+      </Box>
+    </div>
   );
 }

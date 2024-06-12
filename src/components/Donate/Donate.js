@@ -1,10 +1,7 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme } from '@mui/material/styles';
@@ -12,9 +9,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import getLPTheme from '../../theme/getLPTheme';
 import Hero from '../HeroBanner/Hero';
 import Cards from "../BannerCard/Card"
-
-
-
+import DonateImg from "../../assets/Donate.jpeg"
 
 export default function Donate() {
     const theme = useTheme();
@@ -25,7 +20,7 @@ export default function Donate() {
     return (
         <ThemeProvider theme={LPtheme}>
             <CssBaseline />
-            <Hero />
+            <Hero imageHeight={550} />
             <Cards title="Donate" />
 
             <Grid container spacing={4} justifyContent="center" style={{ marginBottom: '30px' }}>
@@ -47,9 +42,8 @@ export default function Donate() {
                     >
                         <CardMedia
                             component="img"
-                            height="800"
-                            image={"https://indraprasthfoundation.org/static/media/img1.cda1decc221f0c1f7498.jpeg"}
-                            style={{ objectFit: 'cover' }}
+                            image={DonateImg}
+                            style={{ objectFit: 'cover', }}
                         />
                     </Card>
                 </Grid>
