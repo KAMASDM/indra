@@ -100,7 +100,7 @@ export default function Footer() {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             width: '100%',
             borderTop: '1px solid',
             borderColor: 'divider',
@@ -109,7 +109,7 @@ export default function Footer() {
           <div>
             <Copyright />
           </div>
-          <Stack
+          {/* <Stack
             direction="row"
             justifyContent="left"
             spacing={1}
@@ -142,7 +142,7 @@ export default function Footer() {
             >
               <LinkedInIcon />
             </IconButton>
-          </Stack>
+          </Stack> */}
         </Box>
       </Container>
     </Box>

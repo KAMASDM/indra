@@ -25,7 +25,6 @@ function App() {
         <Route path="/Blog/:id" element={<ViewBlog />} />
         <Route path="/Gallery/:id" element={<ViewGallery />} />
         <Route path="/Donate" element={<Donate />} />
-
       </Routes>
       <Footer />
     </body>
