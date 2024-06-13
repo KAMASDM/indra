@@ -99,9 +99,9 @@ export default function OurInitiatives() {
   const selectedInitiative = initiatives[selectedItemIndex];
 
   return (
-    <Container id="our-initiatives" sx={{ py: { xs: 8, sm: 16 } }}>
+    <Container id="our-initiatives" sx={{ py: { xs: 8, sm: 10 } }}>
       <Grid container spacing={6}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={8} md={6}>
           <div>
             <Typography component="h2" variant="h4" color="text.primary">
               Our Initiatives

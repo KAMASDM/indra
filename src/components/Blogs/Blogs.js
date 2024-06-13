@@ -24,16 +24,13 @@ const BlogItem = ({ blog, theme }) => {
     const navigate = useNavigate();
     const [showFullDescription, setShowFullDescription] = useState(false);
 
-    // const toggleDescription = () => {
-    //     setShowFullDescription((prev) => !prev);
-    // };
-
     return (
         <Card
             sx={{
                 boxShadow: theme.shadows[3],
                 backgroundColor: theme.palette.background.paper,
             }}
+            style={{ height: '100%' }}
         >
             <CardMedia
                 component="img"
@@ -56,14 +53,6 @@ const BlogItem = ({ blog, theme }) => {
                         />
                     )}
                     <Box sx={{ display: "flex", justifyContent: "center" }}>
-                        {/* <Button
-                            variant="contained"
-                            size="small"
-                            sx={{ marginLeft: 2 }}
-                            onClick={toggleDescription}
-                        >
-                            {showFullDescription ? "Read Less" : "Read More"}
-                        </Button> */}
                         <Button
                             variant="contained"
                             size="small"
@@ -129,10 +118,12 @@ export default function Blogs() {
                                 width: "100%",
                                 typography: "body1",
                             }}
+
                         >
                             <TabList
                                 onChange={handleChange}
                                 aria-label="lab API tabs example"
+                                variant="scrollable" scrollButtons="auto"
                             >
                                 {categories.map((category) => (
                                     <Tab

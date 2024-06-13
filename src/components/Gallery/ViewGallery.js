@@ -8,26 +8,36 @@ import CardMedia from "@mui/material/CardMedia";
 import { useTheme } from "@mui/material/styles";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
+
+const IMAGES_PER_PAGE = 12;
 
 export default function ViewGallery() {
     const theme = useTheme();
     const { id } = useParams();
     const [images, setImages] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
         axios
             .get(
-                `https://indraprasthfoundation.org/api/category/images?category_id=${id}`
+                `https://indraprasthfoundation.org/api/category/images?category_id=${id}&page=${currentPage}&limit=${IMAGES_PER_PAGE}`
             )
             .then((response) => {
-                console.log("-----response-------->", response.data);
-                setImages(response.data.results);
+                const { results, total_pages } = response.data;
+                setImages((prevImages) => [...prevImages, ...results]);
+                setTotalPages(total_pages);
             })
             .catch((error) => {
                 console.error("Error fetching data: ", error);
             });
-    }, [id]);
+    }, [id, currentPage]);
+
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => prevPage + 1);
+    };
 
 
     return (
@@ -43,7 +53,7 @@ export default function ViewGallery() {
                 </Typography>
                 <Grid container spacing={4}>
                     {images.map((image, index) => (
-                        < Grid item xs={12} sm={6} md={4} key={index} >
+                        <Grid item xs={12} sm={6} md={4} key={index}>
                             <Card
                                 sx={{
                                     boxShadow: theme.shadows[3],
@@ -52,7 +62,7 @@ export default function ViewGallery() {
                             >
                                 <CardMedia
                                     component="img"
-                                    height="200"
+                                    height="250"
                                     image={image.image}
                                     alt={image.alt}
                                 />
@@ -60,7 +70,19 @@ export default function ViewGallery() {
                         </Grid>
                     ))}
                 </Grid>
+                <Box sx={{ textAlign: 'center', marginTop: 4, width: '100px' }}>
+                    <Button
+                        onClick={handleNextPage}
+                        disabled={currentPage === totalPages}
+                        color="primary"
+                        fullWidth
+                        sx={{ mr: 1 }}
+                    >
+
+                        View More
+                    </Button>
+                </Box>
             </Box>
-        </Container >
+        </Container>
     );
 }

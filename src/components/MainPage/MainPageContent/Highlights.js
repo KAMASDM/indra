@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-import blanketImage from '../../../assets/blanket.png'; // Import the images
+import blanketImage from '../../../assets/blanket.png';
 import notebookImage from '../../../assets/notebook.png';
 import bicycleImage from '../../../assets/bicycle.png';
 import ganeshImage from '../../../assets/ganesh.png';
@@ -51,8 +51,8 @@ export default function Highlights() {
     <Box
       id="highlights"
       sx={{
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
+        pt: { xs: 4, sm: 8 },
+        pb: { xs: 8, sm: 8 },
         color: 'white',
         bgcolor: 'hsl(220, 30%, 2%)',
       }}
@@ -89,10 +89,10 @@ export default function Highlights() {
                   border: '1px solid',
                   borderColor: 'hsla(220, 25%, 25%, .3)',
                   backgroundColor: 'background.paper',
-                  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // Added box shadow
-                  transition: 'transform 0.3s ease-in-out', // Smooth transition for hover effect
+                  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+                  transition: 'transform 0.3s ease-in-out',
                   '&:hover': {
-                    transform: 'scale(1.05)', // Slightly scale up the card on hover
+                    transform: 'scale(1.05)',
                   },
                 }}
               >

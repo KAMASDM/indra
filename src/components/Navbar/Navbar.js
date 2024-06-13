@@ -182,7 +182,7 @@ function Navbar({ mode, toggleColorMode }) {
                   <MenuItem component={RouterLink} to="/events" onClick={toggleDrawer(false)}>Events</MenuItem>
                   <MenuItem component={RouterLink} to="/blogs" onClick={toggleDrawer(false)}>Blogs</MenuItem>
                   <MenuItem>
-                    <Button color="primary" variant="contained" fullWidth>
+                    <Button color="primary" variant="contained" fullWidth onClick={handleDonateClick}>
                       Donate
                     </Button>
                   </MenuItem>
