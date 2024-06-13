@@ -10,8 +10,6 @@ import Hero from '../HeroBanner/Hero';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import getLPTheme from '../../theme/getLPTheme';
 import Cards from "../BannerCard/Card"
-// import Loader from '../../theme/Loader/Loader';
-// import logo from "../../assets/logo1.png"
 
 const initiatives = [
   {
@@ -54,7 +52,7 @@ export default function AboutUs() {
         id="testimonials"
         sx={{
           pt: { xs: 4, sm: 4 },
-          pb: { xs: 8, sm: 16 },
+          pb: { xs: 8, sm: 8 },
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
@@ -84,7 +82,7 @@ export default function AboutUs() {
 
 
         {/* Mission and Vision Statements */}
-        <Box sx={{ py: 4, backgroundColor: theme.palette.background.default }}>
+        <Box sx={{ py: 2, backgroundColor: theme.palette.background.default }}>
           <Typography variant="h4" gutterBottom align="center" color={theme.palette.primary.main}>
             Our Mission & Vision
           </Typography>

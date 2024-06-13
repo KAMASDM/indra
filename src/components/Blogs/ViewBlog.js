@@ -29,18 +29,8 @@ export default function ViewBlog() {
 
     return (
         <Container
-            id="testimonials"
-            sx={{
-                pt: { xs: 4, sm: 16 },
-                pb: { xs: 8, sm: 16 },
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: { xs: 3, sm: 6 },
-            }}
         >
-            <Box sx={{ backgroundColor: theme.palette.background.default }}>
+            <Box sx={{ py: 12, backgroundColor: theme.palette.background.default }}>
                 <Typography
                     variant="h4"
                     gutterBottom

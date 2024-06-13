@@ -40,9 +40,6 @@ export default function Events() {
             <Container
             >
                 <Box sx={{ py: 4, backgroundColor: theme.palette.background.default }}>
-                    {/* <Typography variant="h4" gutterBottom align="center" color={theme.palette.primary.main}>
-                        Events
-                    </Typography> */}
                     <Grid container spacing={4}>
                         {events.map((event, index) => (
                             <Grid item xs={12} sm={6} md={4} key={index}>

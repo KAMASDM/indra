@@ -1,22 +1,21 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import bannerImage1 from "../../assets/rasodu-3.png";
 import bannerImage2 from "../../assets/two.jpeg";
-import bannerImage3 from "../../assets/three.jpeg"; // Add more images as needed
+import bannerImage3 from "../../assets/three.jpeg";
 import styled from "@mui/system/styled";
 
 const images = [
   bannerImage1,
   bannerImage2,
   bannerImage3,
-  // Add more images here if needed
 ];
 
 const StyledBox = styled("div")(({ theme, height = 700 }) => ({
   alignSelf: "center",
-  width: "calc(100% - 40px)", // Adjusted for left and right margin
+  width: "calc(100% - 40px)",
   height: 400,
   borderRadius: theme.shape.borderRadius,
   boxShadow:
@@ -26,7 +25,7 @@ const StyledBox = styled("div")(({ theme, height = 700 }) => ({
   outline: "1px solid",
   backgroundSize: "cover",
   backgroundPosition: "center",
-  margin: "0 20px", // Left and right margin
+  margin: "0 20px",
   outlineColor:
     theme.palette.mode === "light"
       ? "hsla(220, 25%, 80%, 0.5)"

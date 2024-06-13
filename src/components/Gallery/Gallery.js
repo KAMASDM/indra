@@ -114,23 +114,35 @@ export default function Gallery() {
               typography: "body1",
             }}
           >
-            <TabList onChange={handleOuterChange} aria-label="lab API tabs example">
-              <Tab
-                value="1"
-                label="Events"
+            <TabList
+              onChange={handleOuterChange}
+              aria-label="lab API tabs example"
+              sx={{
+                color: 'black',
+                display: 'flex',
+                gap: '16px',
+                padding: '8px',
+                borderRadius: '4px',
+              }}
+            >
+              <Button
                 color="primary"
-                variant="contained"
-                size="small"
-                sx={{ fontWeight: 'bold', borderRadius: '4px' }}
-              />
-              <Tab
-                value="2"
-                label="Initiatives"
+                variant={outerValue === '1' ? "contained" : "outlined"}
+                fullWidth
+                onClick={() => setOuterValue('1')}
+                sx={{ mr: 1 }}
+              >
+                Events
+              </Button>
+              <Button
                 color="primary"
-                variant="contained"
-                size="small"
-                sx={{ fontWeight: 'bold', borderRadius: '4px' }}
-              />
+                variant={outerValue === '2' ? "contained" : "outlined"}
+                fullWidth
+                onClick={() => setOuterValue('2')}
+                sx={{ mr: 1 }}
+              >
+                Initiatives
+              </Button>
             </TabList>
           </Box>
 
@@ -145,7 +157,7 @@ export default function Gallery() {
                   typography: "body1",
                 }}
               >
-                <TabList onChange={handleInnerEventsChange} aria-label="Events tabs">
+                <TabList onChange={handleInnerEventsChange} aria-label="Events tabs" variant="scrollable" scrollButtons="auto">
                   {category.map((item, index) => (
                     <Tab key={index} value={String(index + 1)} label={item.name} />
                   ))}
@@ -159,7 +171,7 @@ export default function Gallery() {
                       backgroundColor: theme.palette.background.default,
                     }}
                   >
-                    <Grid container spacing={4}>
+                    <Grid container spacing={2}>
                       {data
                         .filter((img) =>
                           img.category.some((cat) => cat.name === item.name)
@@ -175,7 +187,7 @@ export default function Gallery() {
                               <CardMedia
                                 component="img"
                                 style={{ objectFit: "cover" }}
-                                height="300"
+                                height="200"
                                 image={`https://indraprasthfoundation.org/${img.image}`}
                                 alt={item.name}
                               />
@@ -184,7 +196,7 @@ export default function Gallery() {
                         ))
                         .slice(0, 6)}
                     </Grid>
-                    <Box textAlign="center" mt={4}>
+                    <Box textAlign="center" mt={2}>
                       <Button
                         variant="contained"
                         color="primary"
@@ -212,7 +224,7 @@ export default function Gallery() {
                   typography: "body1",
                 }}
               >
-                <TabList onChange={handleInnerInitiativesChange} aria-label="Initiatives tabs">
+                <TabList onChange={handleInnerInitiativesChange} aria-label="Initiatives tabs" variant="scrollable" scrollButtons="auto">
                   {initiatives.map((initiative, index) => (
                     <Tab key={index} value={String(index + 1)} label={initiative.title} />
                   ))}
@@ -226,7 +238,7 @@ export default function Gallery() {
                       backgroundColor: theme.palette.background.default,
                     }}
                   >
-                    <Grid container spacing={4}>
+                    <Grid container spacing={2}>
                       {initiative.images.map((image, idx) => (
                         <Grid item xs={12} sm={6} md={4} key={idx}>
                           <Box
@@ -234,14 +246,13 @@ export default function Gallery() {
                               backgroundImage: `url(${image})`,
                               backgroundSize: 'cover',
                               backgroundPosition: 'center',
-                              height: 300,
+                              height: 200,
                               width: '100%',
                             }}
                           />
                         </Grid>
                       ))}
                     </Grid>
-
                   </Box>
                 </TabPanel>
               ))}
